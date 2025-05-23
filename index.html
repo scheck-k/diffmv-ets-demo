@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous Submission</title>
+    <link rel="stylesheet" href="pico.min.css">
+</head>
+<body>
+    <main class="container">
+        <h1>DiffMV-ETS: Diffusion-based Multi-Voice Electromyography-to-Speech Conversion using Speaker-Independent Speech Training Targets</h1>
+
+        <p>
+            Kevin Scheck<sup>1</sup><sup>*</sup>, 
+            Tom Dombeck<sup>1</sup><sup>*</sup>, 
+            Zhao Ren<sup>1</sup>, 
+            Peter Wu<sup>2</sup>, 
+            Michael Wand<sup>3,4</sup>, 
+            Tanja Schultz<sup>1</sup>
+          </p>
+          
+          <ol style="list-style: none;">
+            <li><sup>1</sup> Cognitive Systems Lab, University of Bremen, Germany</li>
+            <li><sup>2</sup> Berkeley Artificial Intelligence Research, University of California, USA</li>
+            <li><sup>3</sup> Istituto Dalle Molle di studi sull’Intelligenza Artificiale, Switzerland</li>
+            <li><sup>4</sup> Institute for Digital Technologies for Personalized Healthcare, Switzerland</li>
+            <li><sup>*</sup> Equal contribution</li>
+          </ol>
+          
+
+
+          <h2>Abstract</h2>
+          <p>
+            Electromyography (EMG) signals have been investigated for novel voice prostheses to enable speech communication with silent articulation. 
+            In this work, we propose DiffMV-ETS, a multi-voice, diffusion-based EMG-to-speech system that converts EMG signals to speech in selectable voices. 
+            We evaluate it for scenarios where no speech of the speaker wearing EMG sensors is used for training. 
+            For this purpose, we introduce EMG-VCTK, a dataset containing EMG and audio recordings of sentences from the Voice Conversion Tool Kit corpus.
+            We compare EMG models trained with audio of the same speaker, of auxiliary speakers, and of text-to-speech systems.
+            Experiments indicate that models retain their intelligibility and naturalness when trained with synthetic speech. 
+            DiffMV-ETS enhances the speech naturalness and similarity to unseen voices. 
+            To the best of our knowledge, this is the first work to train multi-voice EMG-to-speech systems with speaker-independent targets.
+        </p>
+
+        <h2>Links</h2>
+        <ul>
+            <li>Link to the paper: Will be added soon.</li>
+            <li>Link to the EMG-VCTK dataset: Will be added soon.</li>
+        </ul>
+        
+        <h2>Listening Examples</h2>
+        In the following, there are four listening examples using test EMG signals of EMG-VCTK, recorded during silent speech.
+        The EMG signals are converted to speech in the voice of LibriTTS-R test speakers using the provided voice conditioning utterance.
+        
+        <div style="padding-bottom: 2em;"> </div>
+
+    <section id="1">
+        <h4>Listening Sample 1</h4>
+        <div class="grid">
+            <div><h5>LibriTTS-R test-clean 6930</h5></div>
+            <div>Voice Conditioning: <audio controls><source src="audio/libritts-r-test-clean_6930_81414_000041_000001.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></div>
+        </div>
+        
+        <b>EMG Signal Transcription:</b> <em>Six spoons of fresh snow peas, five thick slabs of blue cheese, and maybe a snack for her brother Bob.</em> <br>
+        
+            <table class="striped">
+            <thead>
+            <tr>
+            <th scope="col">Model / Speech Target</th>
+<th scope="col">Same Speaker</th>
+<th scope="col">Auxilary Speaker</th>
+<th scope="col">Synthetic Speech</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr> <th scope="row">Direct-ETS+YourTTS</th>
+<td><audio controls><source src="audio/SPK002_VCTK-SESS013_VCTK-sil-003_silent__6930___same_session___emg_to_mel__yourtts__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS013_VCTK-sil-003_silent__6930___vctk_speaker___emg_to_mel__yourtts__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS013_VCTK-sil-003_silent__6930___styletts_librittsr_27___emg_to_mel__yourtts__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><tr> <th scope="row">SU-E2S</th>
+<td><audio controls><source src="audio/SPK002_VCTK-SESS013_VCTK-sil-003_silent__6930___same_session___soft_su_ets__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS013_VCTK-sil-003_silent__6930___vctk_speaker___soft_su_ets__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS013_VCTK-sil-003_silent__6930___styletts_librittsr_27___soft_su_ets__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><tr> <th scope="row">DiffMV-ETS (ours)</th>
+<td><audio controls><source src="audio/SPK002_VCTK-SESS013_VCTK-sil-003_silent__6930___same_session___diffmv_ets__proposed__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS013_VCTK-sil-003_silent__6930___vctk_speaker___diffmv_ets__proposed__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS013_VCTK-sil-003_silent__6930___styletts_librittsr_27___diffmv_ets__proposed__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td></tbody>
+</table>
+        </section> <br/>
+    
+    <section id="2">
+        <h4>Listening Sample 2</h4>
+        <div class="grid">
+            <div><h5>LibriTTS-R test-clean 1188</h5></div>
+            <div>Voice Conditioning: <audio controls><source src="audio/libritts-r-test-clean_1188_133604_000011_000003.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></div>
+        </div>
+        
+        <b>EMG Signal Transcription:</b> <em>These take the shape of a long round arch, with its path high above, and its two ends apparently beyond the horizon.</em> <br>
+        
+            <table class="striped">
+            <thead>
+            <tr>
+            <th scope="col">Model / Speech Target</th>
+<th scope="col">Same Speaker</th>
+<th scope="col">Auxilary Speaker</th>
+<th scope="col">Synthetic Speech</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr> <th scope="row">Direct-ETS+YourTTS</th>
+<td><audio controls><source src="audio/SPK002_VCTK-SESS010_VCTK-sil-008_silent__1188___same_session___emg_to_mel__yourtts__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS010_VCTK-sil-008_silent__1188___vctk_speaker___emg_to_mel__yourtts__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS010_VCTK-sil-008_silent__1188___styletts_librittsr_27___emg_to_mel__yourtts__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><tr> <th scope="row">SU-E2S</th>
+<td><audio controls><source src="audio/SPK002_VCTK-SESS010_VCTK-sil-008_silent__1188___same_session___soft_su_ets__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS010_VCTK-sil-008_silent__1188___vctk_speaker___soft_su_ets__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS010_VCTK-sil-008_silent__1188___styletts_librittsr_27___soft_su_ets__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><tr> <th scope="row">DiffMV-ETS (ours)</th>
+<td><audio controls><source src="audio/SPK002_VCTK-SESS010_VCTK-sil-008_silent__1188___same_session___diffmv_ets__proposed__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS010_VCTK-sil-008_silent__1188___vctk_speaker___diffmv_ets__proposed__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS010_VCTK-sil-008_silent__1188___styletts_librittsr_27___diffmv_ets__proposed__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td></tbody>
+</table>
+        </section> <br/>
+    
+    <section id="3">
+        <h4>Listening Sample 3</h4>
+        <div class="grid">
+            <div><h5>LibriTTS-R test-clean 4507</h5></div>
+            <div>Voice Conditioning: <audio controls><source src="audio/libritts-r-test-clean_4507_16021_000023_000002.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></div>
+        </div>
+        
+        <b>EMG Signal Transcription:</b> <em>If the red of the second bow falls upon the green of the first, the result is to give a bow with an abnormally wide yellow band, since red and green light when mixed form yellow.</em> <br>
+        
+            <table class="striped">
+            <thead>
+            <tr>
+            <th scope="col">Model / Speech Target</th>
+<th scope="col">Same Speaker</th>
+<th scope="col">Auxilary Speaker</th>
+<th scope="col">Synthetic Speech</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr> <th scope="row">Direct-ETS+YourTTS</th>
+<td><audio controls><source src="audio/SPK002_VCTK-SESS008_VCTK-sil-023_silent__4507___same_session___emg_to_mel__yourtts__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS008_VCTK-sil-023_silent__4507___vctk_speaker___emg_to_mel__yourtts__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS008_VCTK-sil-023_silent__4507___styletts_librittsr_27___emg_to_mel__yourtts__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><tr> <th scope="row">SU-E2S</th>
+<td><audio controls><source src="audio/SPK002_VCTK-SESS008_VCTK-sil-023_silent__4507___same_session___soft_su_ets__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS008_VCTK-sil-023_silent__4507___vctk_speaker___soft_su_ets__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS008_VCTK-sil-023_silent__4507___styletts_librittsr_27___soft_su_ets__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><tr> <th scope="row">DiffMV-ETS (ours)</th>
+<td><audio controls><source src="audio/SPK002_VCTK-SESS008_VCTK-sil-023_silent__4507___same_session___diffmv_ets__proposed__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS008_VCTK-sil-023_silent__4507___vctk_speaker___diffmv_ets__proposed__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS008_VCTK-sil-023_silent__4507___styletts_librittsr_27___diffmv_ets__proposed__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td></tbody>
+</table>
+        </section> <br/>
+    
+    <section id="4">
+        <h4>Listening Sample 4</h4>
+        <div class="grid">
+            <div><h5>LibriTTS-R test-clean 237</h5></div>
+            <div>Voice Conditioning: <audio controls><source src="audio/libritts-r-test-clean_237_134493_000022_000002.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></div>
+        </div>
+        
+        <b>EMG Signal Transcription:</b> <em>The Norsemen considered the rainbow as a bridge over which the gods passed from earth to their home in the sky.</em> <br>
+        
+            <table class="striped">
+            <thead>
+            <tr>
+            <th scope="col">Model / Speech Target</th>
+<th scope="col">Same Speaker</th>
+<th scope="col">Auxilary Speaker</th>
+<th scope="col">Synthetic Speech</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr> <th scope="row">Direct-ETS+YourTTS</th>
+<td><audio controls><source src="audio/SPK002_VCTK-SESS006_VCTK-sil-016_silent__237___same_session___emg_to_mel__yourtts__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS006_VCTK-sil-016_silent__237___vctk_speaker___emg_to_mel__yourtts__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS006_VCTK-sil-016_silent__237___styletts_librittsr_27___emg_to_mel__yourtts__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><tr> <th scope="row">SU-E2S</th>
+<td><audio controls><source src="audio/SPK002_VCTK-SESS006_VCTK-sil-016_silent__237___same_session___soft_su_ets__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS006_VCTK-sil-016_silent__237___vctk_speaker___soft_su_ets__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS006_VCTK-sil-016_silent__237___styletts_librittsr_27___soft_su_ets__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><tr> <th scope="row">DiffMV-ETS (ours)</th>
+<td><audio controls><source src="audio/SPK002_VCTK-SESS006_VCTK-sil-016_silent__237___same_session___diffmv_ets__proposed__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS006_VCTK-sil-016_silent__237___vctk_speaker___diffmv_ets__proposed__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td><td><audio controls><source src="audio/SPK002_VCTK-SESS006_VCTK-sil-016_silent__237___styletts_librittsr_27___diffmv_ets__proposed__synth.wav" type="audio/mpeg">Your browser does not support the audio element.</audio></td></tbody>
+</table>
+        </section> <br/>
+    </main></body></html>
